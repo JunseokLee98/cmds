@@ -233,6 +233,10 @@ kill <PID>
 ```
 netstat -tulnp | grep <port_num>
 ```
+14. <strong>(System) RAM usage monitoring</strong>
+```
+watch -n 1 'free -h && echo "=== GPU ===" && nvidia-smi --query-gpu=memory.used,memory.total --format=csv'
+```
 </details>
 
 <details>
