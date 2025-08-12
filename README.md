@@ -93,7 +93,7 @@ Ctrl+A, [
 </details>
 
 <details>
-<summary><h2><strong>tmux </strong></h2></summary>
+<summary><h2><strong>tmux</strong></h2></summary>
 
 tmux is useful when you have to utilize multiple terminals concurrently without termination.(i.e., efficient terminal usage!)
 
@@ -141,6 +141,21 @@ set -g mouse on
 tmux source-file ~/.tmux.conf
 ```
 
+<strong>panel split</strong>
+```
+# vertical split (좌우 분할)
+ctrl + b => shift 5
+# horizontal split (위아래 분할)
+ctrl + b => shift + '(between return and : key)
+```
+
+<strong>close panel</strong>
+```
+# close current panel
+ctrl + b => x
+# close all panels
+ctrl + b => &
+```
 </details>
 
 <details>
