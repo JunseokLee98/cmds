@@ -693,11 +693,6 @@ mv <file_name> <destination_path>
 e.g., mv file.txt /home/junseoklee/~
 ```
 
-You can also modify your original file name.
-```
-mv <original_filename> <renewed_filename>
-e.g., mv 
-```
 </details>
 
 <details>
