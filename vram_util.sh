@@ -46,6 +46,7 @@ while true; do
 		CMD="CUDA_VISIBLE_DEVICES=$GPU_LIST python GUI-Actor/eval/screenSpot_pro.py"
 		echo "[$(date "+%Y-%m-%d %H:%M:%S")] Running: $CMD"
 		eval "$CMD"
+  		break
 	else
 		echo "[$(date "+%Y-%m-%d %H:%M:%S")] No available GPUs found. Waiting..."
 	fi
