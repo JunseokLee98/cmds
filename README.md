@@ -300,6 +300,10 @@ conda env update --name <env-name> --file environment.yaml
 # In the activated env
 conda env update --file environment.yaml
 ```
+<strong>Clean conda cache</strong>
+```
+conda clean --all -y
+```
 </details>
 
 <details>
