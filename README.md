@@ -28,6 +28,14 @@ Since this post is written in Korean, I used my native language
 <details>
 <summary><h2>Pytorch</h2></summary>
 
+<strong>Initial Environmental Setup</strong>
+
+```
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu<cuda no.>
+e.g.,
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+
 <strong>Allow dynamic memory allocation to prevent from segmentation</strong>
 
 ```
@@ -42,6 +50,7 @@ os.environ['PYTORCH_CUDA_ALLOC_CONF'] = "expandable_segments:True"
 ```
 torch.no_grad()
 
+# recommended
 torch.inference_mode()
 ```
 
