@@ -137,9 +137,9 @@ ctrl+b -> d
 ctrl+b -> c
 ```
 
-6. <strong>Prerequisite for execution conda</strong>
+6. <strong>Prerequisite for previous input command</strong>
 ```
-bash --login
+bash
 ```
 
 <strong>add scroll in terminal</strong>
