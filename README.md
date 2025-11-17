@@ -473,6 +473,13 @@ git reset HEAD
 git reset HEAD path/to/file
 ```
 
+<strong>Download model from huggingface</strong>
+```
+huggingface-cli download <repo_name> --cache-dir <destination_path>
+
+huggingface-cli download Qwen/Qwen2.5-7B --cache-dir /opt/utl/hg_cache
+```
+
 </details>
 
 <details>
