@@ -505,6 +505,7 @@ pip install flash-attn --no-cache-dir # don't refer to cache for possible mismat
 ```
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/your_cuda_version
 e.g., pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 flash-attn==2.6.3
 ```
 
 <strong>Check version of library installed with pip</strong>
