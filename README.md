@@ -315,6 +315,11 @@ conda env update --file environment.yaml
 ```
 conda clean --all -y
 ```
+
+<strong>breakpoint가 for문에서 종료 안 될 때 다음의 커맨드를 실행</strong>
+```
+import os; os._exit(0)
+```
 </details>
 
 <details>
