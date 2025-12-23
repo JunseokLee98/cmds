@@ -372,6 +372,11 @@ pip install gdown
 gdown --fuzzy (google drive link)
 ```
 
+If you fail to download the file due to access, then you can try below
+```
+gdown --id <file_id> -O <file_name.zip>
+```
+
 ```
 file_name.zip -d /path/to/directory
 ```
