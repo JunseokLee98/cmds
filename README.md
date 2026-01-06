@@ -25,6 +25,8 @@ Since this post is written in Korean, I used my native language
 [vLLM supported GPU](https://docs.vllm.ai/en/latest/getting_started/installation/gpu.html#install-the-latest-code-using-pip)  
 
 [flash-attn PyPI](https://pypi.org/project/flash-attn/)
+
+[Context Engineering for AI Agents by Manus](https://manus.im/ko/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
 </details>
 
 <details>
