@@ -27,6 +27,8 @@ Since this post is written in Korean, I used my native language
 [flash-attn PyPI](https://pypi.org/project/flash-attn/)
 
 [Context Engineering for AI Agents by Manus](https://manus.im/ko/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
+
+[Coding Style Guide by Google](https://google.github.io/styleguide/)
 </details>
 
 <details>
