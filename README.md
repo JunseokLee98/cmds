@@ -44,17 +44,6 @@ e.g.,
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
-<strong>Allow dynamic memory allocation to prevent from segmentation</strong>
-
-```
-# More details in https://pytorch.org/docs/stable/notes/cuda.html
-export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
-
-# alternatives in code
-import os
-os.environ['PYTORCH_CUDA_ALLOC_CONF'] = "expandable_segments:True"
-```
-
 ```
 torch.no_grad()
 
@@ -67,6 +56,8 @@ Remember that this technique cannot resolve fundamental OOM problems. i.e., You 
 
 <details>
 <summary><h2>screen</h2></summary>
+
+deprecated
 
 0. <strong>Create a session</strong>
 ```
@@ -105,8 +96,6 @@ kill -9 <session id>
 ```
 Ctrl+A, [
 ```
-
-
 </details>
 
 <details>
@@ -118,7 +107,7 @@ Multiple sessions can be created via tmux, and it results in more efficient term
 
 0. <strong>Prerequisite</strong>
 ```
-sudo apt-get install tmux
+(sudo) apt-get install tmux
 ```
 1. <strong>Create a session</strong>
 ```
@@ -136,7 +125,7 @@ tmux attach -t <session_name>
 ```
 4. <strong>Detach from a session</strong>
 
-If using this command, you need to the former and the latter separately not concurrently(i.e., 1) ctrl+b, 2) d
+If using this command, you need to the former and the latter separately not concurrently(e.g., with keeping 1)ctrl+b pressed, click 2) d)
 ```
 ctrl+b -> d
 ```
@@ -177,6 +166,8 @@ ctrl + b => &
 
 <details>
 <summary><h2><strong>Multi-GPUs</strong></h2></summary>
+
+\[New\] You can use nvitop library as alternative after installing it.
 
 <strong> Monitor GPU status in regular </strong>
 ```
@@ -226,9 +217,9 @@ jobs
 ```
 top
 ```
-8. <strong>Similar to top, but better in terms of visualization</strong>
+8. <strong>\[Outdated\]Similar to top, but better in terms of visualization</strong>
 ```
-nvtop # recommended
+nvtop
 htop
 ```
 9. <strong>Monitor certain process for GPU utilization</strong>
@@ -273,45 +264,47 @@ watch -n 1 'free -h && echo "=== GPU ===" && nvidia-smi --query-gpu=memory.used,
 
 <details>
 <summary><h2><strong>Conda</strong></h2></summary>
-<strong>1. Install pytorch library with cuda</strong>
+<strong>Install pytorch library with cuda</strong>
 
 You might as well check whether cuda version is aligned with pytorch one.
 
 ```
-conda install pytorch=='your version' torchvision=='version' torchaudio=='version' pytorch-cuda='cuda-version' -c pytorch -c nvidia
+conda install -c pytorch -c nvidia pytorch torchvision torchaudio pytorch-cuda='cuda-version'
+e.g.,
+conda install -c pytorch -c nvidia pytorch torchvision torchaudio pytorch-cuda=12.1
 ```
-You can refer to the following regarding to the version; [Pytorch previous version](https://pytorch.org/get-started/previous-versions/)
+~~You can refer to the following regarding to the version; [Pytorch previous version](https://pytorch.org/get-started/previous-versions/)~~
 
-<strong>2. Check whether to be ready for running GPU or installed cuda on your OS </strong>
+<strong>Check whether to be ready for running GPU or installed cuda on your OS </strong>
 ```
 cuda_is_available() module in pytorch
 ```
-<strong>3. List of conda virtual environments</strong>
+<strong>List of conda virtual environments</strong>
 ```
 conda env list
 ```
-<strong>4. Create conda virtual environment python version is specified</strong>
+<strong>Create conda virtual environment python version is specified</strong>
 ```
 conda create -n (env name) python='version'
 ```
-<strong>5. Remove your conda virtual environment</strong>
+<strong>Remove your conda virtual environment</strong>
 ```
 conda env remove --name (env name) --all
 ```
-<strong>6. Activate/Deactivate conda virtual environment</strong>
+<strong>Activate/Deactivate conda virtual environment</strong>
 ```
 conda activate/deactivate
 ```
-<strong>7. Create a new conda environment with old library</strong>
+<strong>Create a new conda environment with old library</strong>
 ```
 conda create --name <new_name> --clone <old_env_name>
 e.g., conda create --name new_nev --clone llara
 ```
-<strong>8. Create current environment.yml</strong>
+<strong>Create current environment.yml</strong>
 ```
 conda env export > environment.yml
 ```
-<storng>9. Install library dependency via environment.yaml</strong>
+<storng>Install library dependency via environment.yaml</strong>
 ```
 conda env update --name <env-name> --file environment.yaml
 # In the activated env
@@ -322,7 +315,7 @@ conda env update --file environment.yaml
 conda clean --all -y
 ```
 
-<strong>breakpoint가 for문에서 종료 안 될 때 다음의 커맨드를 실행</strong>
+<strong>If you cannot terminate breakpoint due to `for` loop, then execute the below</strong>
 ```
 import os; os._exit(0)
 ```
@@ -337,11 +330,11 @@ ctrl+shift+p
 files.exclude
 ```
 
-<strong>1. Cwd path setting</strong>
+<strong>Cwd path setting</strong>
 ```
 ctrl+shift+p
 ```
-<strong>2. KeyInterrupt during code execution</strong>
+<strong>KeyInterruption during code execution</strong>
 ```
 ctrl+c
 ```
@@ -349,12 +342,12 @@ or you can insert process termination call(i.e., exit()) into your code snippet
 ```
 exit()
 ```
-<strong>3. list of hidden extensions</strong>
+<strong>list of hidden extensions</strong>
 ```
 ctrl + , -> search files.exclude
 ```
 
-<strong>4. automatic formatting for json file</strong>
+<strong>automatic formatting for json file</strong>
 ```
 shift+alt+F # If you try to it with large-size(>20MB) json, then it cannot be executed.
 
@@ -469,7 +462,7 @@ git fetch origin
 git reset --hard origin/main
 ```
 
-<strong>8. Git lfs installation</strong>
+<strong>Git lfs installation</strong>
 
 You can download [the specific version of lfs](https://github.com/git-lfs/git-lfs/releases) depending on your OS if you are not a root manager.
 ```
@@ -495,7 +488,7 @@ git reset HEAD path/to/file
 ```
 huggingface-cli download <repo_name> --cache-dir <destination_path>
 
-huggingface-cli download Qwen/Qwen2.5-7B --cache-dir /opt/utl/hg_cache
+huggingface-cli download Qwen/Qwen2.5-7B --cache-dir ./cache/~~
 ```
 
 </details>
@@ -503,10 +496,12 @@ huggingface-cli download Qwen/Qwen2.5-7B --cache-dir /opt/utl/hg_cache
 <details>
 <summary><h2><strong>pip</strong></h2></summary>
 
-<strong>Itemize installed libraries</strong>
+<strong>~~Not recommended Itemize installed libraries~~</strong>
 ```
 pip freeze > requirements.txt
 ```
+
+I do not recommend above command, because there could be more than one way to do it.
 
 <strong>Check Pytorch and flash-attention version</strong>
 ```
@@ -529,7 +524,7 @@ pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 flash-attn==2.6.3
 <strong>Check version of library installed with pip</strong>
 ```
 pip show <library_name>
-e.g., pip show smolagents
+e.g., pip show torch
 ```
 
 <strong>Show state-of-the-art library installed with PyPI</strong>
@@ -543,12 +538,6 @@ Upgrade
 ```
 pip install -U <library_name>
 ```
-</details>
-
-<details>
-  <summary><h2><strong>csv, xlsx extension</strong></h2></summary>
-If you change the file which extension is csv, then you might as well save xlsx extension to ensure that changes are applied in terms of visualization.
-(csv 파일의 세팅을 변경했다면, 시각화 측면에서 변경사항이 반영되도록 xlsx 확장자로 저장하는 게 낫다.)
 </details>
 
 <details>
@@ -606,7 +595,7 @@ In details, the environment variable will be written at the very bottom after ex
 
 When you press ESC, then linux will be changed to command mode.
 
-<h3><strong>3.Save</strong></h3>
+<h3><strong>3. Save</strong></h3>
 
 <strong>3-1. Save changes and exit</strong>
 ```
@@ -651,7 +640,7 @@ ls -l (file_name)
 ```
 vi (file-name)
 ```
-Although you chanage your file's mode via chmod command, it cannot be changed because of parent directory's permission. Therefore, you could check the upper directory's permission.
+Although you change your file's mode via chmod command, it cannot be changed because of parent directory's permission. Therefore, you could check the upper directory's permission.
 
 <strong>8. printk is used in kernel mode instead of printf</strong>
 ```
@@ -695,9 +684,9 @@ drwxr-x--- 22 junseoklee   junseoklee    4096 Feb 24 11:13 junseoklee
 In case of directory, x means execution. You can access it via cd cmd.
 | Case | r | x | 설명 |
 |----------|----------|----------|----------|
-| ls dir  | Yes  | No  | 디렉토리 목록 보려면 r 필요 |
-| cd dir  | No  | Yes  | 디렉토리 진입하려면 x 필요 |
-| ls dir/file  | No  | Yes  | 디렉토리 내 파일 정보 보려면 x 필요 |
+| ls dir  | Yes  | No  | To look into list of directories, r is needed |
+| cd dir  | No  | Yes  | To access directory, x is needed |
+| ls dir/file  | No  | Yes  | To look into file information in directory, x is needed |
 
 <strong>wget</strong>
 ```
@@ -705,7 +694,7 @@ wget -c <your_url> -O <output_path> -o output.log &
 e.g.,
 wget -c https://ai2-public-datasets.s3-us-west-2.amazonaws.com/charades/Charades_v1.zip -O /home/dataset/AVSD/Charades_v1.zip -o /home/dataset/AVSD/output.log &
 
--c: continue(이어받기)
+-c: continuously download
 -o: output log to file
 -O: output file path
 &: background execution
