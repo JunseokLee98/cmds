@@ -302,7 +302,7 @@ e.g., conda create --name new_nev --clone llara
 ```
 <strong>Create current environment.yml</strong>
 ```
-conda env export > environment.yml
+conda env export --no-builds > environment.yaml
 ```
 <storng>Install library dependency via environment.yaml</strong>
 ```
