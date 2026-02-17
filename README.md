@@ -527,7 +527,7 @@ pip show <library_name>
 e.g., pip show torch
 ```
 
-<strong>Show state-of-the-art library installed with PyPI</strong>
+<strong>List up supported version of library installed with PyPI</strong>
 ```
 pip index versions <library_name>
 e.g.,
@@ -538,6 +538,7 @@ Upgrade
 ```
 pip install -U <library_name>
 ```
+
 </details>
 
 <details>
